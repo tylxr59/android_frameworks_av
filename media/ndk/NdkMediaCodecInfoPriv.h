@@ -72,7 +72,8 @@ struct ACodecVideoCapabilities {
             = mVideoCaps->getSupportedPerformancePoints();
         for (auto it = performancePoints.begin(); it != performancePoints.end(); it++) {
             mPerformancePoints.emplace_back(
-                    std::shared_ptr<const android::VideoCapabilities::PerformancePoint>(&(*it)));
+                    std::shared_ptr<const android::VideoCapabilities::PerformancePoint>(
+                            mVideoCaps, &(*it)));
         }
     }
 
